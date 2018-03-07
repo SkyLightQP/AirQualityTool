@@ -4,6 +4,8 @@ const path = require('path')
 const static = require("serve-static")
 const logger = require('log4js').getLogger()
 const config = require('./config.js')
+const moment = require('moment')
+const table = require('./db/model.js')
 
 logger.level = 'ALL'
 
@@ -13,7 +15,12 @@ app.get('/arduino/:temp/:hum/:token', function(req,res){
     var hum = req.params.hum
     var token = req.params.token
     if(token == config.token){
-        // TODO: DB 연동
+        var date = moment().format('YYYY-MM-DD h:mm:ss a')
+        table.create({
+            date: date,
+            temperature: temp,
+            humidity: hum
+        })
         logger.info(`Request successed! temperature: ${temp} / humidity: ${hum} / token: ${token}`)
         res.sendStatus(200).end()
     } else {

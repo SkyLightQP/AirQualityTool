@@ -1,10 +1,8 @@
 exports.port = 3000
-exports.mariadb = {
+exports.db = {
     database: '',
-    table: '',
-    host: '',
-    port: '',
+    host: 'localhost',
     username: '',
     password: ''
 }
-exports.token = 't'
+exports.token = 'token'
