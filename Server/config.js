@@ -7,3 +7,4 @@ exports.mariadb = {
     username: "",
     password: ""
 }
+exports.token = "123456789~!@#$%^&*()_+"
