@@ -9,14 +9,20 @@ logger.level = 'ALL'
 
 app.use(static(path.join(__dirname,'public')))
 app.get('/arduino/:temp/:hum/:token', function(req,res){
-    logger.debug("temp: " + req.params.temp)
-    logger.debug("hum: " + req.params.hum)
-    logger.debug("token: " + req.params.token)
-    res.sendStatus(200).end()
-    // TODO: TOKEN 확인하기 
+    var temp = req.params.temp
+    var hum = req.params.hum
+    var token = req.params.token
+    if(token == config.token){
+        // TODO: DB 연동
+        logger.info(`Request successed! temperature: ${temp} / humidity: ${hum} / token: ${token}`)
+        res.sendStatus(200).end()
+    } else {
+        logger.warn(`Request failed! temperature: ${temp} / humidity: ${hum} / token: ${token}`)
+        res.sendStatus(403).end()
+    }
 })
 
 const port = config.port
 app.listen(port, function () {
-    logger.info('Start server on ' + port)
+    logger.info(`Start server on ${port}`)
 })

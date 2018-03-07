@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "log4js": "^2.5.3",
+    "mysql": "^2.15.0",
     "path": "^0.12.7",
     "serve-static": "^1.13.2"
   }
