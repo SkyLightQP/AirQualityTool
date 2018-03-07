@@ -3,3 +3,5 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/AirQualityTool.iml
+
+Server/node_modules
