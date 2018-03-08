@@ -1,18 +1,22 @@
 const db = require('./database.js')
 const Sequelize = require('sequelize')
 
+const AirData = db.define('AirData', {
+    date: {
+        type: Sequelize.STRING(128)
+    },
+    temperature: {
+        type: Sequelize.STRING(128)
+    },
+    humidity: {
+        type: Sequelize.STRING(128)
+    }
+}, {
+    tableName: 'AirData',
+    freezeTableName: true,
+    timestamps: false
+})
+
 db.sync()
 
-const model = db.define('airqualitytool', {
-        date: {
-            type: Sequelize.STRING
-        },
-        temperature: {
-            type: Sequelize.STRING
-        },
-        humidity: {
-            type: Sequelize.STRING
-        }
-    })
-
-module.exports = model
+module.exports = AirData

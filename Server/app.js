@@ -15,7 +15,8 @@ app.get('/arduino/:temp/:hum/:token', function(req,res){
     var hum = req.params.hum
     var token = req.params.token
     if(token == config.token){
-        var date = moment().format('YYYY-MM-DD h:mm:ss a')
+        var date = moment().format('YYYY-MM-DD HH:mm:ss')
+        console.log(date)
         table.create({
             date: date,
             temperature: temp,

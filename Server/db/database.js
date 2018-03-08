@@ -1,7 +1,7 @@
 const sequelize = require('sequelize')
 const config = require('../config.js')
 
-const db = new sequelize(
+module.exports = new sequelize(
     config.db.database,
     config.db.username,
     config.db.password,
@@ -10,5 +10,3 @@ const db = new sequelize(
         dialect: 'mysql'
     }
 )
-
-module.exports = db
