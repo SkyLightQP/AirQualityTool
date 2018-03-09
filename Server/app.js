@@ -21,7 +21,7 @@ app.get('/arduino/:temp/:hum/:token', (req,res) => {
         res.sendStatus(403).end()
         return
     }
-    var date = moment().format('YYYY-MM-DD HH:mm:ss')
+    const date = moment().format('YYYY-MM-DD HH:mm:ss')
     table.create({date, temperature, humidity})
     logger.info(`Request successed! temperature: ${temperature} / humidity: ${humidity} / token: ${token}`)
     res.sendStatus(200).end()
