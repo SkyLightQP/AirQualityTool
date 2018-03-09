@@ -1,36 +1,33 @@
-const express = require('express')
-const app = express()
+const app = require('express')()
 const path = require('path')
 const static = require("serve-static")
 const logger = require('log4js').getLogger()
-const config = require('./config.js')
 const moment = require('moment')
+
+const config = require('./config.js')
 const table = require('./db/index.js')
 
 logger.level = 'ALL'
 
 app.use(static(path.join(__dirname,'public')))
-app.get('/arduino/:temp/:hum/:token', function(req,res){
-    var temp = req.params.temp
-    var hum = req.params.hum
-    var token = req.params.token
-    if(token == config.token){
-        var date = moment().format('YYYY-MM-DD HH:mm:ss')
-        console.log(date)
-        table.create({
-            date: date,
-            temperature: temp,
-            humidity: hum
-        })
-        logger.info(`Request successed! temperature: ${temp} / humidity: ${hum} / token: ${token}`)
-        res.sendStatus(200).end()
-    } else {
-        logger.warn(`Request failed! temperature: ${temp} / humidity: ${hum} / token: ${token}`)
+app.get('/arduino/:temp/:hum/:token', (req,res) => {
+    const {
+        temp: temperature,
+        hum: humidity,
+        token
+    } = req.params
+    if(token != config.token){
+        logger.warn(`Request failed! temperature: ${temperature} / humidity: ${humidity} / token: ${token}`)
         res.sendStatus(403).end()
+        return
     }
+    var date = moment().format('YYYY-MM-DD HH:mm:ss')
+    table.create({date, temperature, humidity})
+    logger.info(`Request successed! temperature: ${temperature} / humidity: ${humidity} / token: ${token}`)
+    res.sendStatus(200).end()
 })
 
 const port = config.port
-app.listen(port, function () {
+app.listen(port, () => {
     logger.info(`Start server on ${port}`)
 })
