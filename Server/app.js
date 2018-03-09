@@ -5,7 +5,7 @@ const static = require("serve-static")
 const logger = require('log4js').getLogger()
 const config = require('./config.js')
 const moment = require('moment')
-const table = require('./db/model.js')
+const table = require('./db/index.js')
 
 logger.level = 'ALL'
 

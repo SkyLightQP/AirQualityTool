@@ -12,8 +12,6 @@ const AirData = db.define('AirData', {
         type: Sequelize.STRING(128)
     }
 }, {
-    tableName: 'AirData',
-    freezeTableName: true,
     timestamps: false
 })
 
