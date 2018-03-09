@@ -5,7 +5,7 @@ const {
     password,
     host,
     port
-} = require('../config.js').db
+} = require('../config').db
 
 module.exports = new sequelize(
     database,
