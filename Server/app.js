@@ -9,7 +9,25 @@ const table = require('./db/index')
 
 logger.level = 'ALL'
 
+
 app.use(static(path.join(__dirname,'public')))
+
+app.post('/graph',(req, res) => {
+    var lables = []
+    var tdata = []
+    var hdata = []
+
+    table.findAll().then((value) => {
+        value.forEach(data => {
+            lables.push(data.dataValues.date)
+            tdata.push(data.dataValues.temperature)
+            hdata.push(data.dataValues.humidity)
+        })
+        var responseData = {'result': 'ok', 'lables': lables, 'tdata': tdata, 'hdata': hdata}
+        res.json(responseData)
+    })
+})
+
 app.get('/arduino/:temp/:hum/:token', (req,res) => {
     const {
         temp: temperature,
