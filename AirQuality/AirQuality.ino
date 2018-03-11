@@ -13,6 +13,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 String token = "token";
 int ms = 10000;
+String url = "http://localhost:3000";
 
 HTTPClient http;
 
@@ -37,7 +38,7 @@ void loop(){
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-  http.begin("http://localhost/arduino/" + (String)t + "/" + (String)h + "/" + token);
+  http.begin(url + "/arduino/" + (String)t + "/" + (String)h + "/" + token);
   int httpCode = http.GET();  
   if (httpCode > 0) {
      String payload = http.getString();
