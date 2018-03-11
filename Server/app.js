@@ -23,7 +23,7 @@ app.post('/graph',(req, res) => {
             tdata.push(data.dataValues.temperature)
             hdata.push(data.dataValues.humidity)
         })
-        var responseData = {'result': 'ok', 'lables': lables, 'tdata': tdata, 'hdata': hdata}
+        const responseData = {'result': 'ok', 'lables': lables, 'tdata': tdata, 'hdata': hdata}
         res.json(responseData)
     })
 })
