@@ -12,7 +12,7 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 String token = "token";
-int ms = 5000;
+int ms = 10000;
 
 HTTPClient http;
 
