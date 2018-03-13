@@ -12,8 +12,8 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 String token = "token";
-int ms = 10000;
-String url = "http://localhost:3000";
+int ms = 100000;
+String url = "http://localhost";
 
 HTTPClient http;
 
