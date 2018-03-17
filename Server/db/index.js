@@ -1,7 +1,7 @@
-const db = require('./database')
 const Sequelize = require('sequelize')
+const db = require('./database')
 
-const AirData = db.define('AirData', {
+const table = {
     date: {
         type: Sequelize.STRING(128)
     },
@@ -11,9 +11,9 @@ const AirData = db.define('AirData', {
     humidity: {
         type: Sequelize.STRING(128)
     }
-}, {
-    timestamps: false
-})
+}
+
+const AirData = db.define('AirData', table, { timestamps: false })
 
 db.sync()
 
