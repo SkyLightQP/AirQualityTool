@@ -12,8 +12,8 @@ module.exports = new sequelize(
     username,
     password,
     {
-        host: host,
-        port: port,
+        host,
+        port,
         dialect: 'mysql'
     }
 )
