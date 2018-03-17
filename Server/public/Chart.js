@@ -28,7 +28,7 @@ class Graph {
         const humidity = this.chartData
         humidity.data.datasets = [{
             fill: false,
-            data: tdahdatata,
+            data: hdata,
             label: '습도',
             borderColor: ['rgba(99, 132, 255, 0.8)']
         }]
