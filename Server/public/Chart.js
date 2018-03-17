@@ -1,61 +1,51 @@
-class Graph {
-    static element = {
-        temperature: document.getElementById('temperature'),
-        humidity: document.getElementById('humidity')
-    }
-
-    static chartData = {
-        type: 'line',
-        data: { labels },
-        options: {
-            scales: {
-                yAxes: [{ stacked: true }]
-            }
-        }
-    }
-
-    static success () {
-        if (result !== 'ok') return
-
-        const temperature = this.chartData
-        temperature.data.datasets = [{
-            fill: false,
-            data: tdata,
-            label: '온도',
-            borderColor: ['rgba(255, 99, 132, 0.8)']
-        }]
-
-        const humidity = this.chartData
-        humidity.data.datasets = [{
-            fill: false,
-            data: hdata,
-            label: '습도',
-            borderColor: ['rgba(99, 132, 255, 0.8)']
-        }]
-
-        const temperatureChart = new Chart(this.element.temperature, temperature)
-        const humidityChart = new Chart(this.element.humidity, humidity)
-    }
-
-    static get query () {
-        return {
-            url: './graph',
-            type: 'post',
-            success: this.success
-        }
-    }
-
-    static destroy () {
-        this.element = null
-        this.chartData = null
-        this.success = null
-        this.query = null
-    }
-}
+const elementTemperature = document.getElementById('temperature')
+const elementHumidity = document.getElementById('humidity')
 
 $(document).ready(() => {
-    $.ajax(Graph.query)
+    $.ajax({
+        url: './graph',
+        type: 'post',
+        success: (result) => {
+            if (result.result !== 'ok') return
 
-    Graph.destroy()
-    Graph = null
+            const temperatureChart = new Chart(elementTemperature, {
+                type: 'line',
+                data: {
+                    labels: result.lables,
+                    datasets: [{
+                        label: '온도',
+                        data: result.tdata,
+                        fill: false,
+                        borderColor: ['rgba(255, 99, 132, 0.8)']
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                }
+            })
+            const humidityChart = new Chart(elementHumidity, {
+                type: 'line',
+                data: {
+                    labels: result.lables,
+                    datasets: [{
+                        label: '습도',
+                        data: result.hdata,
+                        fill: false,
+                        borderColor: ['rgba(99, 132, 255, 0.8)']
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                }
+            })
+        }
+    })
 })
