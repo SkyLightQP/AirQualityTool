@@ -10,9 +10,6 @@ const table = {
     },
     humidity: {
         type: Sequelize.STRING(128)
-    },
-    ugm: {
-        type: Sequelize.STRING(128)
     }
 }
 

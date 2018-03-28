@@ -15,17 +15,15 @@ app.post('/graph',(req, res) => {
     const initialData = {
         lables: [],
         tdata: [],
-        hdata: [],
-        udata: []
+        hdata: []
     }
 
     const validator = (accumulator, { dataValues }) => {
-        const { date, temperature, humidity, ugm } = dataValues
+        const { date, temperature, humidity } = dataValues
 
         accumulator.lables.push(date)
         accumulator.tdata.push(temperature)
         accumulator.hdata.push(humidity)
-        accumulator.udata.push(ugm)
 
         return accumulator
     }
@@ -38,15 +36,14 @@ app.post('/graph',(req, res) => {
     })
 })
 
-app.get('/arduino/:temp/:hum/:ugm/:token', (req, res) => {
+app.get('/arduino/:temp/:hum/:token', (req, res) => {
     const {
         temp: temperature,
         hum: humidity,
-        ugm,
         token
     } = req.params
 
-    const result = `temperature: ${temperature} / humidity: ${humidity} / ug/m^3: ${ugm} / token: ${token}`
+    const result = `temperature: ${temperature} / humidity: ${humidity} / token: ${token}`
 
     if (config.token !== token) {
         logger.warn(`Request failed! ${ result }`)
@@ -56,7 +53,7 @@ app.get('/arduino/:temp/:hum/:ugm/:token', (req, res) => {
 
     const date = moment().format('YYYY-MM-DD HH:mm:ss')
 
-    table.create({ date, temperature, humidity, ugm })
+    table.create({ date, temperature, humidity })
     logger.info(`Request successed! ${ result }`)
     res.sendStatus(200).end()
 })
