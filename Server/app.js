@@ -46,7 +46,7 @@ app.get('/arduino/:temp/:hum/:ugm3/:token', (req, res) => {
         token
     } = req.params
 
-    const result = `temperature: ${temperature} / humidity: ${humidity} Dust: ${ugm3} / token: ${token}`
+    const result = `temperature: ${temperature} / humidity: ${humidity} / Dust: ${ugm3} / token: ${token}`
 
     if (config.token !== token) {
         logger.warn(`Request failed! ${ result }`)
