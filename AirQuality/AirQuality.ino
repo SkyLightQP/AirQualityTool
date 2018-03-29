@@ -1,4 +1,4 @@
-/* 
+zjav/* 
  *  아두이노 공기 측정 및 시각화(AirQualityTool)
  *  SkyLightQP(하늘빛QP).
  *  
@@ -21,8 +21,8 @@ DHT dht(DHTPIN, DHTTYPE);
 #define DUSTPIN 15
 
 // delay (ms, 1000ms = 1s)
-#define REQUEST_DELAY 300000
-#define SAMPLETIME_DELAY 5000
+#define REQUEST_DELAY 5000
+#define SAMPLETIME_DELAY 3000
 
 String token = "token"; 
 String host = "localhost";
@@ -64,7 +64,7 @@ void loop() {
   }
   getDustValue();
 
-  if(ugm3 > 0.01) {
+  if(ugm3 >= 1) {
     HTTPClient http;
     Serial.print("Request Ready...");
     http.begin("http://" + (String)host + ":" + (String)port + "/arduino/" + (String)t + "/" + (String)h + "/" + (String)ugm3 + "/" + (String)token);
@@ -92,7 +92,7 @@ void getDustValue(){
     concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62;
     pcsPerCF = concentration * 100;
     ugm3 = pcsPerCF / 13000;
-    if (ugm3 > 0.01) {
+    if (ugm3 >= 1) {
       lowpulseoccupancy = 0;
       starttime = millis();    
     }
