@@ -3,8 +3,9 @@
 
 ## 사용 부품
 
-- NodeMCU
+- NodeMCU (CH340)
 - DHT11
+- Grove DustSensor
 
 ## 참고 코드
 
