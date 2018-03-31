@@ -54,7 +54,7 @@ app.get('/arduino/:temp/:hum/:ugm/:token', (req, res) => {
         return
     }
 
-    const date = moment().format('YYYY-MM-DD HH:mm:ss')
+    const date = moment().format('YYYY-MM-DD HH:mm')
 
     table.create({ date, temperature, humidity, ugm })
     logger.info(`Request successed! ${ result }`)
