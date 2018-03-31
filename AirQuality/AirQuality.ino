@@ -1,4 +1,4 @@
-zjav/* 
+/* 
  *  아두이노 공기 측정 및 시각화(AirQualityTool)
  *  SkyLightQP(하늘빛QP).
  *  
@@ -22,7 +22,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 // delay (ms, 1000ms = 1s)
 #define REQUEST_DELAY 5000
-#define SAMPLETIME_DELAY 3000
+#define SAMPLETIME_DELAY 5000
 
 String token = "token"; 
 String host = "localhost";
@@ -52,7 +52,7 @@ void setup() {
   
   lowpulseoccupancy = 0;
   starttime = millis();
-  delay(5000);
+  delay(1000);
 }
 
 void loop() {
@@ -66,7 +66,7 @@ void loop() {
 
   if(ugm3 >= 1) {
     HTTPClient http;
-    Serial.print("Request Ready...");
+    Serial.println("Request Ready...");
     http.begin("http://" + (String)host + ":" + (String)port + "/arduino/" + (String)t + "/" + (String)h + "/" + (String)ugm3 + "/" + (String)token);
     int httpCode = http.GET();
     if (httpCode > 0) {
@@ -76,8 +76,6 @@ void loop() {
       Serial.println("Request error!"); 
     }
     http.end();
-  } else { 
-    Serial.println("DustSensor doesn't ready.");
   }
   
   delay(REQUEST_DELAY);
@@ -92,10 +90,12 @@ void getDustValue(){
     concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62;
     pcsPerCF = concentration * 100;
     ugm3 = pcsPerCF / 13000;
-    if (ugm3 >= 1) {
+    if (ugm3 >= 0.01) {
       lowpulseoccupancy = 0;
       starttime = millis();    
     }
+  } else {
+    Serial.println("DustSensor doesn't ready.");
   }
 }
 
