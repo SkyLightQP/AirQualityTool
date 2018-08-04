@@ -4,6 +4,7 @@ module.exports = {
     },
 
     head:{
+        title: 'AirQualityTool - 공기품질측정기',
         link: [
             { rel: "stylesheet", href: "//bootswatch.com/3/yeti/bootstrap.min.css"}
         ],
@@ -20,5 +21,5 @@ module.exports = {
             { src: "//code.highcharts.com/stock/modules/exporting.js" },
             { src: "//code.highcharts.com/stock/modules/export-data.js" }
         ]
-    },
+    }
 }

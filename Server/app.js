@@ -73,5 +73,7 @@ app.get('/arduino/:temp/:hum/:ugm/:token', (req, res) => {
     res.sendStatus(200).end()
 })
 
+app.use(nuxt.render)
+
 const { port } = config
 app.listen(port, () => logger.info(`Start server on ${port}`))
