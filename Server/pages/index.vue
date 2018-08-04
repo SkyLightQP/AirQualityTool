@@ -14,14 +14,12 @@
                     <!-- TODO: 그래프 추가 -->
                 </div>
                 <div class="col-lg-6">
-                    <Panel>
-                        <div style="text-align: center;">
-                            <h3><strong>미세먼지 단계</strong></h3>
-                            <ColorText color="info">0 ~ 30 좋음</ColorText>
-                            <ColorText color="success"> ~80 보통</ColorText>
-                            <ColorText color="warning"> ~150 나쁨</ColorText>
-                            <ColorText color="danger"> 151~ 매우나쁨</ColorText>
-                        </div>
+                    <Panel style="text-align: center;">
+                        <h3><strong>미세먼지 단계</strong></h3>
+                        <ColorText color="info">0 ~ 30 좋음</ColorText>
+                        <ColorText color="success"> ~80 보통</ColorText>
+                        <ColorText color="warning"> ~150 나쁨</ColorText>
+                        <ColorText color="danger"> 151~ 매우나쁨</ColorText>
                     </Panel>
                 </div>
             </div>
