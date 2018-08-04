@@ -2,7 +2,36 @@ const elementTemperature = document.getElementById('temperature')
 const elementHumidity = document.getElementById('humidity')
 const elementDust = document.getElementById('dust')
 
+/*
+
 $(document).ready(() => {
+    $.ajax({
+        url: './graph/t',
+        type: 'post',
+        success: (result) => {
+            if (result.result !== 'ok') return
+            Highcharts.stockChart('temperature', {
+                rangeSelector: {
+                    selected: 1
+                },
+
+                title: {
+                    text: '온도 테스트'
+                },
+
+                series: [{
+                    name: '온도',
+                    data: result,
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                }]
+            })
+        }
+    })
+})
+
+/*$(document).ready(() => {
     $.ajax({
         url: './graph',
         type: 'post',
@@ -68,4 +97,4 @@ $(document).ready(() => {
             })
         }
     })
-})
+})*/

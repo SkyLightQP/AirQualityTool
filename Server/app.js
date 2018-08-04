@@ -1,17 +1,28 @@
 const app = require('express')()
-const path = require('path')
-const static = require('serve-static')
 const logger = require('log4js').getLogger()
 const moment = require('moment')
+const { Nuxt, Builder } = require('nuxt')
+
+const nuxtConfig = require('./nuxt.config')
 
 const config = require('./config')
 const table = require('./db/index')
 
-logger.level = 'ALL'
+if (process.env.NODE_ENV === 'production') {
+    logger.level = 'ALL'
+} else if (process.env.NODE_ENV === 'development') {
+    logger.level = 'DEBUG'
+    nuxtConfig.dev = true
+}
 
-app.use(static(path.join(__dirname,'public')))
+const nuxt = new Nuxt(nuxtConfig)
 
-app.post('/graph',(req, res) => {
+if(nuxtConfig.dev) {
+    new Builder(nuxt).build()
+}
+
+app.post('/graph/:type',(req, res) => {
+    const { type } = req.params
     const initialData = {
         lables: [],
         tdata: [],
@@ -34,7 +45,8 @@ app.post('/graph',(req, res) => {
         const responseData = value.reduce(validator, initialData)
         responseData.result = 'ok'
 
-        res.json(responseData)
+       // res.json(responseData)
+        res.json(initialData.tdata[0])
     })
 })
 

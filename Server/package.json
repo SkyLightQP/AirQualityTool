@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/SkyLightQP/AirQualityTool#readme",
   "dependencies": {
+    "cross-env": "^5.2.0",
     "express": "^4.16.2",
     "log4js": "^2.5.3",
     "moment": "^2.21.0",
     "mysql2": "^1.5.2",
-    "path": "^0.12.7",
-    "sequelize": "^4.35.2",
-    "serve-static": "^1.13.2"
+    "nuxt": "^1.4.2",
+    "sequelize": "^4.35.2"
   }
 }
