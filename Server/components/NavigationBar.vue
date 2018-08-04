@@ -1,6 +1,6 @@
 <template>
     <section>
-        <nav class="navbar navbar-default">
+        <nav id="NavigationBar" class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">AirQualityTool</a>

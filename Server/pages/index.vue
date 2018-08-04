@@ -1,36 +1,46 @@
 <template>
     <section>
-        <div class="container" style="margin-top: 5rem">
+        <div id="Container" class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div id="temperature" width="400" height="250"></div>
-                    <!--<canvas id="temperature" width="400" height="250"></canvas>-->
+                    <!-- TODO: 그래프 추가 -->
                 </div>
                 <div class="col-lg-6">
-                    <canvas id="humidity" width="400" height="250"></canvas>
+                    <!-- TODO: 그래프 추가 -->
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <canvas id="dust" width="400" height="250"></canvas>
+                    <!-- TODO: 그래프 추가 -->
                 </div>
                 <div class="col-lg-6">
-                    <div class="panel panel-default" style="margin-top: 3.2rem; height: 200px; min-width: 400px">
-                        <div class="panel-body">
-                            <div style="text-align: center;">
-                                <h3><strong>미세먼지 단계</strong></h3>
-                                <h5 class="text-info">0 ~ 30 좋음</h5>
-                                <h5 class="text-success"> ~80 보통</h5>
-                                <h5 class="text-warning"> ~150 나쁨</h5>
-                                <h5 class="text-danger"> 151~ 매우나쁨</h5>
-                            </div>
+                    <Panel>
+                        <div style="text-align: center;">
+                            <h3><strong>미세먼지 단계</strong></h3>
+                            <ColorText color="info">0 ~ 30 좋음</ColorText>
+                            <ColorText color="success"> ~80 보통</ColorText>
+                            <ColorText color="warning"> ~150 나쁨</ColorText>
+                            <ColorText color="danger"> 151~ 매우나쁨</ColorText>
                         </div>
-                    </div>
+                    </Panel>
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+    import Panel from '~/components/Panel'
+    import ColorText from '~/components/ColorText'
+
+    export default {
+        components: {
+            Panel,
+            ColorText
+        }
+    }
+</script>
+
 <!-- <script>
     Highcharts.stockChart('temperature', {
         rangeSelector: {
