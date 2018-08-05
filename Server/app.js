@@ -1,7 +1,7 @@
 const app = require('express')()
 const logger = require('log4js').getLogger()
 const moment = require('moment')
-const { Nuxt, Builder } = require('nuxt')
+const {Nuxt, Builder} = require('nuxt')
 
 const nuxtConfig = require('./nuxt.config')
 
@@ -17,37 +17,31 @@ if (process.env.NODE_ENV === 'production') {
 
 const nuxt = new Nuxt(nuxtConfig)
 
-if(nuxtConfig.dev) {
+if (nuxtConfig.dev) {
     new Builder(nuxt).build()
 }
 
-app.post('/graph/:type',(req, res) => {
-    const { type } = req.params
-    const initialData = {
-        lables: [],
-        tdata: [],
-        hdata: [],
-        udata: []
-    }
-
-    const validator = (accumulator, { dataValues }) => {
-        const { date, temperature, humidity, ugm } = dataValues
-
-        accumulator.lables.push(date)
-        accumulator.tdata.push(temperature)
-        accumulator.hdata.push(humidity)
-        accumulator.udata.push(ugm)
-
-        return accumulator
-    }
-
-    table.findAll().then((value) => {
-        const responseData = value.reduce(validator, initialData)
-        responseData.result = 'ok'
-
-       // res.json(responseData)
-        res.json(initialData.tdata[0])
+const sendJsonData = (res, type) => {
+    table.findAll().then((data) => {
+        const initialData = [ ]
+        data.forEach(eachData => {
+            const arrays = []
+            arrays.push(Number(eachData.dataValues['date']))
+            arrays.push(Number(eachData.dataValues[type]))
+            initialData.push(arrays)
+        })
+        res.json(initialData)
     })
+}
+
+app.get('/graph/temperature', (req, res) => {
+    sendJsonData(res, 'temperature')
+})
+app.get('/graph/humidity', (req, res) => {
+    sendJsonData(res, 'humidity')
+})
+app.get('/graph/ugm', (req, res) => {
+    sendJsonData(res, 'ugm')
 })
 
 app.get('/arduino/:temp/:hum/:ugm/:token', (req, res) => {
@@ -66,14 +60,14 @@ app.get('/arduino/:temp/:hum/:ugm/:token', (req, res) => {
         return
     }
 
-    const date = moment().format('YYYY-MM-DD HH:mm')
+    const date = moment().unix()
 
-    table.create({ date, temperature, humidity, ugm })
+    table.create({date, temperature, humidity, ugm})
     logger.info(`Request successed! ${ result }`)
     res.sendStatus(200).end()
 })
 
 app.use(nuxt.render)
 
-const { port } = config
+const {port} = config
 app.listen(port, () => logger.info(`Start server on ${port}`))

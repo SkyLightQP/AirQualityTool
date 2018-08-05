@@ -1,100 +1,59 @@
-const elementTemperature = document.getElementById('temperature')
-const elementHumidity = document.getElementById('humidity')
-const elementDust = document.getElementById('dust')
-
-/*
-
 $(document).ready(() => {
-    $.ajax({
-        url: './graph/t',
-        type: 'post',
-        success: (result) => {
-            if (result.result !== 'ok') return
-            Highcharts.stockChart('temperature', {
-                rangeSelector: {
-                    selected: 1
-                },
+    $.getJSON('./graph/temperature', (data) => {
+        Highcharts.stockChart('temperature', {
+            rangeSelector: {
+                selected: 1
+            },
 
-                title: {
-                    text: '온도 테스트'
-                },
+            title: {
+                text: '온도'
+            },
 
-                series: [{
-                    name: '온도',
-                    data: result,
-                    tooltip: {
-                        valueDecimals: 2
-                    }
-                }]
-            })
-        }
+            series: [{
+                name: '온도',
+                data: data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        })
+    })
+    $.getJSON('./graph/humidity', (data) => {
+        Highcharts.stockChart('humidity', {
+            rangeSelector: {
+                selected: 1
+            },
+
+            title: {
+                text: '습도'
+            },
+
+            series: [{
+                name: '습도',
+                data: data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        })
+    })
+    $.getJSON('./graph/ugm', (data) => {
+        Highcharts.stockChart('ugm', {
+            rangeSelector: {
+                selected: 1
+            },
+
+            title: {
+                text: '미세먼지'
+            },
+
+            series: [{
+                name: '미세먼지',
+                data: data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        })
     })
 })
-
-/*$(document).ready(() => {
-    $.ajax({
-        url: './graph',
-        type: 'post',
-        success: (result) => {
-            if (result.result !== 'ok') return
-
-            const temperatureChart = new Chart(elementTemperature, {
-                type: 'line',
-                data: {
-                    labels: result.lables,
-                    datasets: [{
-                        label: '온도(℃)',
-                        data: result.tdata,
-                        fill: false,
-                        borderColor: ['rgba(255, 99, 132, 0.8)']
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
-                }
-            })
-            const humidityChart = new Chart(elementHumidity, {
-                type: 'line',
-                data: {
-                    labels: result.lables,
-                    datasets: [{
-                        label: '습도(％)',
-                        data: result.hdata,
-                        fill: false,
-                        borderColor: ['rgba(99, 132, 255, 0.8)']
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
-                }
-            })
-            const dustChart = new Chart(elementDust, {
-                type: 'line',
-                data: {
-                    labels: result.lables,
-                    datasets: [{
-                        label: '미세먼지 (㎍/㎥)',
-                        data: result.udata,
-                        fill: false,
-                        borderColor: ['rgba(183, 132, 99, 0.8)']
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
-                }
-            })
-        }
-    })
-})*/

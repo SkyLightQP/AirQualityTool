@@ -3,15 +3,15 @@
         <div id="Container" class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- TODO: 그래프 추가 -->
+                    <Graph name="temperature"></Graph>
                 </div>
                 <div class="col-lg-6">
-                    <!-- TODO: 그래프 추가 -->
+                    <Graph name="humidity"></Graph>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- TODO: 그래프 추가 -->
+                    <Graph name="ugm"></Graph>
                 </div>
                 <div class="col-lg-6">
                     <Panel style="text-align: center;">
@@ -30,32 +30,13 @@
 <script>
     import Panel from '~/components/Panel'
     import ColorText from '~/components/ColorText'
+    import Graph from '~/components/Graph'
 
     export default {
         components: {
             Panel,
-            ColorText
+            ColorText,
+            Graph
         }
     }
 </script>
-
-<!-- <script>
-    Highcharts.stockChart('temperature', {
-        rangeSelector: {
-            selected: 1
-        },
-
-        title: {
-            text: '온도 테스트'
-        },
-
-        series: [{
-            name: '온도',
-            data: 0,
-            tooltip: {
-                valueDecimals: 2
-            }
-        }]
-    })
-</script>
-<script src="../assets/chart.js"></script> -->
