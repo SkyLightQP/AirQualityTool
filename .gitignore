@@ -4,4 +4,4 @@
 
 /node_modules
 
-src/server/config.json
+src/server/config.ts
