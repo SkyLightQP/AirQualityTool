@@ -1,4 +1,3 @@
-exports.port = 3000
 exports.db = {
     database: '',
     host: 'localhost',

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node app.js",
-    "startdev": "cross-env NODE_ENV=development node app.js",
+    "dev": "cross-env NODE_ENV=development node app.js",
     "generate": "nuxt generate"
   },
   "repository": {
