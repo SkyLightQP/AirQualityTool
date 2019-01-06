@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const db = require('./database')
+const Sequelize = require('sequelize');
+const db = require('./database');
 
 const table = {
     date: {
@@ -14,10 +14,12 @@ const table = {
     ugm: {
         type: Sequelize.STRING(128)
     }
-}
+};
 
-const AirData = db.define('AirData', table, { timestamps: false })
+const AirData = db.define('AirData', table, { timestamps: false });
 
-db.sync()
+db.sync();
 
-module.exports = AirData
+export default {
+    AirData
+};

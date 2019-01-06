@@ -1,19 +1,17 @@
-const sequelize = require('sequelize')
-const {
-    database,
-    username,
-    password,
-    host,
-    port
-} = require('../config').db
+import Sequelize from 'sequelize';
 
-module.exports = new sequelize(
-    database,
-    username,
-    password,
+import config from '../config';
+
+const host = config.host;
+const port = config.port;
+
+module.exports = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
     {
         host,
         port,
         dialect: 'mysql'
     }
-)
+);
