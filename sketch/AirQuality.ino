@@ -14,19 +14,19 @@
 #include <WiFiClient.h>
 #include <ESP8266HTTPClient.h>
 
-#define DHTPIN 5
+#define DHTPIN 5 // D1
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 
-#define DUSTPIN 15
+#define DUSTPIN 15 // D8
 
 // delay (ms, 1000ms = 1s)
 #define REQUEST_DELAY 5000
 #define SAMPLETIME_DELAY 5000
 
-String token = "token"; 
-String host = "localhost";
-String port = "3000";
+String token = "";
+String host = "";
+String port = "";
 
 unsigned long duration;
 unsigned long starttime;

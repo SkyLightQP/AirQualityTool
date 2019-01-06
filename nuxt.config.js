@@ -27,5 +27,8 @@ module.exports = {
         vendor: [
             '~/assets/chart.js'
         ]
-    }
+    },
+
+    buildDir: 'dist/client',
+    srcDir: 'src/client'
 }

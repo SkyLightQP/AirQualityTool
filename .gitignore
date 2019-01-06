@@ -1,3 +1,5 @@
-.nuxt
+/dist
+
 .idea
-Server/node_modules
+
+/node_modules
