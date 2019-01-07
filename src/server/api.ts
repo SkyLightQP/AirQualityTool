@@ -1,10 +1,9 @@
-import app from './app';
+import { express, logger } from './app';
 import config from "./config";
 import moment from "moment";
 import db from './db/index';
 
-const router = app.express.Router();
-const logger = app.logger;
+const router = express.Router();
 
 const table = db.AirData;
 
@@ -40,19 +39,19 @@ router.post('/push/:temp/:hum/:ugm/', (req, res) => {
         ugm
     } = req.params;
 
-    const token = req.headers.X_AQT_Token;
-    // 아두이노 기능 여부에 따라 수정 예정
+    const headers: string = JSON.stringify(req.headers);
+    const token = req.headers['x-aqt-token'];
 
-    const result = `temperature: ${temperature} / humidity: ${humidity} / Dust: ${ugm} / token: ${token}`;
+    const result = `temperature: ${temperature}, humidity: ${humidity}, dust: ${ugm}, headers: ${headers}`;
 
     if(token === undefined){
-        res.send([{"error":"Token을 찾을 수 없습니다."}]).end();
-        return
+        res.send([{"code": 401, "message": "token 값이 비어있습니다."}]).end();
+        return;
     }
 
     if (config.token !== token) {
         logger.warn(`Request failed! ${ result }`);
-        res.sendStatus(403).end();
+        res.send([{"code": 401, "message": "올바르지 않은 token입니다."}]).end();
         return;
     }
 
