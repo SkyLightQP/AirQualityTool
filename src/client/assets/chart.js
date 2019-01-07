@@ -26,75 +26,43 @@ const rangeSetting = {
             text: '전체'
         }
     ]
-}
+};
+
+const createStock = (name, lable, color, unit, data) => {
+    Highcharts.stockChart(name, {
+        rangeSelector: rangeSetting,
+
+        title: {
+            text: lable
+        },
+
+        colors: [color],
+
+        series: [{
+            name: lable,
+            data: data,
+            tooltip: {
+                xDateFormat: '%Y-%m-%d %H:%M:%S',
+                valueSuffix: unit,
+                valueDecimals: 2,
+            }
+        }]
+    });
+};
 
 $(document).ready(() => {
+    Highcharts.setOptions({
+        time: {
+            timezoneOffset: -9 * 60
+        }
+    });
     $.getJSON('./graph/temperature', (data) => {
-        Highcharts.setOptions({
-            time: {
-                timezoneOffset: -9 * 60
-            }
-        })
-        Highcharts.stockChart('temperature', {
-            rangeSelector: rangeSetting,
-
-            title: {
-                text: '온도'
-            },
-
-            colors: ['#FF6384'],
-
-            series: [{
-                name: '온도',
-                data: data,
-                tooltip: {
-                    xDateFormat: '%Y-%m-%d %H:%M:%S',
-                    valueSuffix: '℃',
-                    valueDecimals: 2,
-                }
-            }]
-        })
-    })
+        createStock('temperature', '온도', '#FF6384', '℃', data);
+    });
     $.getJSON('./graph/humidity', (data) => {
-        Highcharts.stockChart('humidity', {
-            rangeSelector: rangeSetting,
-
-            title: {
-                text: '습도'
-            },
-
-            colors: ['#6384FF'],
-
-            series: [{
-                name: '습도',
-                data: data,
-                tooltip: {
-                    xDateFormat: '%Y-%m-%d %H:%M:%S',
-                    valueSuffix: '%',
-                    valueDecimals: 2
-                }
-            }]
-        })
-    })
+        createStock('humidity', '습도', '#6384FF', '%', data);
+    });
     $.getJSON('./graph/ugm', (data) => {
-        Highcharts.stockChart('ugm', {
-            rangeSelector: rangeSetting,
-
-            title: {
-                text: '미세먼지'
-            },
-
-            colors: ['#B78463'],
-
-            series: [{
-                name: '미세먼지',
-                data: data,
-                tooltip: {
-                    xDateFormat: '%Y-%m-%d %H:%M:%S',
-                    valueSuffix: '㎍/㎥',
-                    valueDecimals: 2
-                }
-            }]
-        })
-    })
-})
+        createStock('ugm', '미세먼지', '#B78463', '㎍/㎥', data);
+    });
+});
