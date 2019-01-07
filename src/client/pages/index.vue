@@ -32,7 +32,6 @@
     import ColorText from '~/components/ColorText'
     import Graph from '~/components/Graph'
 
-
     export default {
         components: {
             Panel,
