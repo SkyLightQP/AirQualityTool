@@ -20,7 +20,7 @@ const int DUSTPIN = 5; // D1
 
 DHT dht(DHTPIN, DHT11);
 
-const int REQUEST_DELAY = 3000;
+const int REQUEST_DELAY = 60000;
 const int SAMPLETIME_DELAY = 5000;
 
 const String token = TOKEN;
