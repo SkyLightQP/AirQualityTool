@@ -5,3 +5,5 @@
 /node_modules
 
 src/server/config.ts
+
+sketch/AirQuality/config.h
