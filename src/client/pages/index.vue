@@ -32,11 +32,15 @@
     import ColorText from '~/components/ColorText'
     import Graph from '~/components/Graph'
 
+
     export default {
         components: {
             Panel,
             ColorText,
             Graph
+        },
+        mounted() {
+            require('~/assets/chart.js')
         }
     }
 </script>
