@@ -56,7 +56,6 @@ const createStock = (name, lable, color, unit, data) => {
         }],
 
         time: {
-            timezoneOffset: 5 * 60,
             useUTC: false
         }
     });

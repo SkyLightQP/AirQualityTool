@@ -55,7 +55,7 @@ router.post('/push/:temp/:hum/:ugm/', (req, res) => {
         return;
     }
 
-    const date = moment().unix();
+    const date = moment().unix() * 1000;
 
     table.create({date, temperature, humidity, ugm});
     logger.info(`Request successed! ${ result }`);
