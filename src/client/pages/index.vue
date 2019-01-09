@@ -1,27 +1,22 @@
 <template>
-    <section>
-        <div class="columns">
-            <div class="column is-one-fifth">
-                <SideMenu/>
-            </div>
-            <div class="column">
-                본문
-            </div>
-        </div>
-
-    </section>
+    <Graph name="temperature"></Graph>
 </template>
 
 <script>
     import SideMenu from "../components/SideMenu";
+    import Graph from "../components/Graph";
+    import axios from "axios";
+    import chart from "~/assets/chart.js";
 
     export default {
         components: {
+            Graph,
             SideMenu
 
         },
         mounted() {
-            require('~/assets/chart.js')
+            axios.get('./graph/temperature')
+                .then(res => chart.createStock('temperature', '온도', '#FF6384', '℃', res.data));
         }
     }
 </script>

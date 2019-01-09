@@ -62,20 +62,6 @@ const createStock = (name, lable, color, unit, data) => {
     });
 };
 
-window.onload = () => {
-    /*Highcharts.setOptions({
-        global: {
-            timezoneOffset: 5 * 60,
-            useUTC: false
-        }
-    });
-    $.getJSON('./graph/temperature', (data) => {
-        createStock('temperature', '온도', '#FF6384', '℃', data);
-    });
-    $.getJSON('./graph/humidity', (data) => {
-        createStock('humidity', '습도', '#6384FF', '%', data);
-    });
-    $.getJSON('./graph/ugm', (data) => {
-        createStock('ugm', '미세먼지', '#B78463', '㎍/㎥', data);
-    });*/
+export default {
+    createStock
 }

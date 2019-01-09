@@ -4,8 +4,8 @@
             그래프
         </p>
         <ul class="menu-list">
-            <li><a>온도</a></li>
-            <li><a>습도</a></li>
+            <li><nuxt-link to="/">온도</nuxt-link></li>
+            <li><nuxt-link to="/humidity">습도</nuxt-link></li>
             <li><a>공기품질</a></li>
         </ul>
         <p class="menu-label">
@@ -27,5 +27,11 @@
     #menu {
         margin-top: 1em;
         margin-left: 1em;
+    }
+
+    @media screen and (max-width: 630px) {
+        #menu {
+            margin-right: 1em;
+        }
     }
 </style>

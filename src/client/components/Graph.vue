@@ -1,5 +1,5 @@
 <template>
-    <div :id="name" style="height: 400px; min-width: 400px"></div>
+    <div class="graph" :id="name"></div>
 </template>
 
 <script>
@@ -12,3 +12,10 @@
         }
     }
 </script>
+
+<style scoped lang="scss">
+    .graph {
+        margin-top: 1em;
+        height: 600px;
+    }
+</style>
