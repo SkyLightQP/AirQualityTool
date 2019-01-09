@@ -38,6 +38,13 @@ const createStock = (name, lable, color, unit, data) => {
 
         colors: [color],
 
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                millisecond: '%H:%M:%S'
+            }
+        },
+
         series: [{
             name: lable,
             data: data,
@@ -46,14 +53,20 @@ const createStock = (name, lable, color, unit, data) => {
                 valueSuffix: unit,
                 valueDecimals: 2,
             }
-        }]
+        }],
+
+        time: {
+            timezoneOffset: 5 * 60,
+            useUTC: false
+        }
     });
 };
 
-$(document).ready(() => {
-    Highcharts.setOptions({
-        time: {
-            timezoneOffset: -9 * 60
+window.onload = () => {
+    /*Highcharts.setOptions({
+        global: {
+            timezoneOffset: 5 * 60,
+            useUTC: false
         }
     });
     $.getJSON('./graph/temperature', (data) => {
@@ -64,5 +77,5 @@ $(document).ready(() => {
     });
     $.getJSON('./graph/ugm', (data) => {
         createStock('ugm', '미세먼지', '#B78463', '㎍/㎥', data);
-    });
-});
+    });*/
+}
