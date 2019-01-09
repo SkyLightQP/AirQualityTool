@@ -12,7 +12,7 @@
             정보
         </p>
         <ul class="menu-list">
-            <li><a>대기오염 기준</a></li>
+            <li><nuxt-link to="/standard">대기오염 기준</nuxt-link></li>
         </ul>
     </aside>
 </template>
