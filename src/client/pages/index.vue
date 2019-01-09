@@ -3,16 +3,13 @@
 </template>
 
 <script>
-    import SideMenu from "../components/SideMenu";
     import Graph from "../components/Graph";
     import axios from "axios";
     import chart from "~/assets/chart.js";
 
     export default {
         components: {
-            Graph,
-            SideMenu
-
+            Graph
         },
         mounted() {
             axios.get('./graph/temperature')

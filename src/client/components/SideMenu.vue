@@ -6,7 +6,7 @@
         <ul class="menu-list">
             <li><nuxt-link to="/">온도</nuxt-link></li>
             <li><nuxt-link to="/humidity">습도</nuxt-link></li>
-            <li><a>공기품질</a></li>
+            <li><nuxt-link to="/dust">공기품질</nuxt-link></li>
         </ul>
         <p class="menu-label">
             정보

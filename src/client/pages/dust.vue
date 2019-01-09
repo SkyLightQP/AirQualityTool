@@ -1,5 +1,5 @@
 <template>
-    <Graph name="humidity"/>
+    <Graph name="ugm"/>
 </template>
 
 <script>
@@ -8,11 +8,11 @@
     import chart from "~/assets/chart.js";
 
     export default {
-        name: "humidity",
+        name: "dust",
         components: {Graph},
         mounted() {
-            axios.get('./graph/humidity')
-                .then(res => chart.createStock('humidity', '습도', '#6384FF', '%', res.data));
+            axios.get('./graph/ugm')
+                .then(res => chart.createStock('ugm', '미세먼지', '#B78463', '㎍/㎥', res.data));
         }
     }
 </script>
