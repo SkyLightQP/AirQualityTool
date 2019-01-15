@@ -1,5 +1,5 @@
 import { express, logger } from './app';
-import config from "./config";
+import config from "./config/config";
 import moment from "moment";
 import db from './db/index';
 

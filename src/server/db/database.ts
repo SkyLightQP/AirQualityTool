@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-import config from '../config';
+import config from '../config/config';
 
 const host = config.host;
 const port = config.port;

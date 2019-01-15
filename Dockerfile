@@ -9,6 +9,6 @@ COPY / /
 RUN npm install typescript ts-loader
 RUN npm install
 
-VOLUME ["/src/server/config.ts"]
+VOLUME ["/src/server/config"]
 
 CMD ["bash", "run.sh"]
