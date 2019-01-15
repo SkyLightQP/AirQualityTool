@@ -1,5 +1,5 @@
-# AirQualityTool
-온도, 습도 데이터를 입력받아 DB에 기록하고 시각적으로 표시합니다.
+# AirQualityTool [![works badge](https://cdn.jsdelivr.net/gh/nikku/works-on-my-machine@v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
+온도, 습도, 공기품질(미세먼지) 값을 데이터베이스에 기록하고 웹사이트로 그래프를 보여줍니다.
 
 ## 사용 부품
 
@@ -8,15 +8,10 @@
 - Grove DustSensor
 
 ## 참고 코드
-
-- Dust Sensor Value -> ug/m^3
+Grove DustSensor value -> ug/m^3 변환 코드
 
 - http://wiki.seeedstudio.com/Grove-Dust_Sensor/
 - https://blog.naver.com/issugroup/221004961500 
 
-## TODO
-- [x] 현재 차트 라이브러리에서 더 보기 편한 라이브러리로 수정
-
-
 ## 라이센스
-해당 코드는 AGPL 라이센스를 따르고 있습니다.
+[GNU Affero General Public License v3.0](https://github.com/SkyLightQP/AirQualityTool/blob/master/LICENSE)
