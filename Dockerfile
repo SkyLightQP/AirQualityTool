@@ -6,7 +6,7 @@ EXPOSE 80
 WORKDIR /
 COPY / /
 
-RUN npm install typescript ts-loader
+RUN npm install -g typescript ts-loader
 RUN npm install
 
 VOLUME ["/src/server/config"]
