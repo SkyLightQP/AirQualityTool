@@ -24,7 +24,7 @@ if (nuxtConfig.dev) {
 app.use('/graph', api.router);
 app.use(nuxt.render);
 
-const port = 3000;
+const port = 80;
 app.listen(port, () => logger.info(`Http server listening on ${port}`));
 
 export {
