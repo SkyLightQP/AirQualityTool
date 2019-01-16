@@ -33,6 +33,7 @@
     "node-sass": "^4.11.0",
     "nuxt": "^2.3.4",
     "sass-loader": "^7.1.0",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "typescript": "^3.2.2"
   }
 }
